@@ -8,8 +8,10 @@ import pickle
 
 class Vectorizer(CountVectorizer):
     def __init__(self, lang=None, **kwargs):
+        # self.lang = lang
+        # super(Vectorizer, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.lang = lang
-        super(Vectorizer, self).__init__(**kwargs)
 
     def preprocess(self, raw_documents):
         if self.lang == "en":
@@ -26,11 +28,13 @@ class Vectorizer(CountVectorizer):
 
     def fit(self, raw_documents):
         raw_documents = self.preprocess(raw_documents)
-        return super(Vectorizer, self).fit(raw_documents)
+        # return super(Vectorizer, self).fit(raw_documents)
+        return self.fit(raw_documents)
 
     def transform(self, raw_documents):
         raw_documents = self.preprocess(raw_documents)
-        return super(Vectorizer, self).transform(raw_documents)
+        # return super(Vectorizer, self).transform(raw_documents)
+        return self.transform(raw_documents)
 
     def partial_fit(self, raw_documents):
         if hasattr(self, "vocabulary_"):
