@@ -6,10 +6,12 @@ sys.path.append("../")
 from dssm.model import DSSM
 import pandas as pd
 
-DATA_PATH: pathlib.Path = pathlib.Path(__file__).parent / "data" / "quora_duplicate_questions.tsv"
+DATA_PATH: pathlib.Path = (
+    pathlib.Path(__file__).parent / "data" / "quora_duplicate_questions.tsv"
+)
 
 # df = pd.read_csv('data/quora_duplicate_questions.tsv', sep='\t')
-df = pd.read_csv(DATA_PATH, sep="\t").sample(frac=0.1)
+df = pd.read_csv(DATA_PATH, sep="\t").sample(frac=0.001)
 question1 = []
 question2 = []
 for i, row in df.iterrows():
